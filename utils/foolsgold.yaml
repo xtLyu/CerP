@@ -1396,7 +1396,7 @@ decay: 0.0005
 diff_privacy: false
 dirichlet_alpha: 0.5
 environment_name: cifar100_CerP
-epochs: 200
+epochs: 100
 eta: 1
 fg_use_memory: true
 filter_parameters: 1
