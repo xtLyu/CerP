@@ -15,7 +15,7 @@ python -m visdom.server -p 8098
 ```
 python main.py --params utils/X.yaml
 ```
-`X` = `mkrum` or `bulyan`. 
+`X` = `mkrum`, `foolsgold` or `bulyan`. 
 
 Parameters can be changed in those yaml files to reproduce our experiments.
 
