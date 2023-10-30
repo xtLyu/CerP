@@ -159,7 +159,8 @@ def Cifar100Train(helper, start_epoch, local_model, target_model, is_poison, age
 
 
                         if helper.params['aggregation_methods'] == config.AGGR_BULYAN or \
-                                helper.params['aggregation_methods'] == config.AGGR_MKRUM:
+                                helper.params['aggregation_methods'] == config.AGGR_MKRUM or \
+                                helper.params['aggregation_methods'] == config.AGGR_FOOLSGOLD:
                             for i, (name, params) in enumerate(model.named_parameters()):
                                 if params.requires_grad:
                                     if internal_epoch == 1 and batch_id == 0:
@@ -226,7 +227,6 @@ def Cifar100Train(helper, start_epoch, local_model, target_model, is_poison, age
                     main.logger.info(f"Scaling by  {clip_rate}")
                     if helper.params['aggregation_methods'] == config.AGGR_FOOLSGOLD or \
                             helper.params['aggregation_methods'] == config.AGGR_BULYAN or \
-                            helper.params['aggregation_methods'] == config.AGGR_MEDIAN or \
                             helper.params['aggregation_methods'] == config.AGGR_MKRUM:
                         client_gradss = [i * clip_rate for i in client_grad]
                         client_grad = client_gradss
@@ -266,7 +266,8 @@ def Cifar100Train(helper, start_epoch, local_model, target_model, is_poison, age
                         loss.backward()
 
                         if helper.params['aggregation_methods'] == config.AGGR_BULYAN or \
-                                helper.params['aggregation_methods'] == config.AGGR_MKRUM:
+                                helper.params['aggregation_methods'] == config.AGGR_MKRUM or \
+                                helper.params['aggregation_methods'] == config.AGGR_FOOLSGOLD:
                             for i, (name, params) in enumerate(model.named_parameters()):
                                 if params.requires_grad:
                                     if internal_epoch == 1 and batch_id == 0:

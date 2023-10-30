@@ -221,6 +221,11 @@ if __name__ == '__main__':
                                       corrupted_count=int(helper.params['thetamin']),
                                       users_count=int(helper.params['no_models']))
 
+        elif helper.params['aggregation_methods'] == config.AGGR_FOOLSGOLD:
+            is_updated, names, weights, alphas = helper.foolsgold_update(helper.target_model, updates)
+
+            num_oracle_calls = 1
+
 
         # clear the weight_accumulator
         weight_accumulator = helper.init_weight_accumulator(helper.target_model)
